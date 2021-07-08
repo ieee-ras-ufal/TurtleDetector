@@ -4,7 +4,7 @@ Created on Wed Jul  7 11:46:08 2021
 
 @author: jagra26
 """
-import progressbar
+from tqdm import tqdm
 import image_slicer
 import glob
 import os
@@ -34,7 +34,7 @@ files = glob.glob(args.path+"/*")
 
 count = 1
 
-for i in progressbar.progressbar(range(len(files))):
+for i in tqdm(range(len(files))):
     try:
         filename = files[i]
         tiles = image_slicer.slice(filename, col=args.collumns, row=args.rows, save=False)
