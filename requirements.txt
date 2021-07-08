@@ -2,3 +2,6 @@
 
 # C:\Users\joaoa\Documents\TurtleDetector\slicer.py: 8
 image-slicer == 2.1.1
+
+# C:\Users\joaoa\Documents\TurtleDetector\slicer.py: 7
+progressbar == 2.5

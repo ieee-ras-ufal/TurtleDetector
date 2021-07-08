@@ -4,7 +4,7 @@ Created on Wed Jul  7 11:46:08 2021
 
 @author: jagra26
 """
-
+import progressbar
 import image_slicer
 import glob
 import os
@@ -34,10 +34,10 @@ files = glob.glob(args.path+"/*")
 
 count = 1
 
-for filename in files:
-    print(count, "/", len(files))
-    tiles = image_slicer.slice(filename, col=args.collumns, row=args.rows, save=False)
-    image_slicer.save_tiles(tiles, prefix=get_prefix(filename, args.path), directory=directory)
-    count +=1
-
+for i in progressbar.progressbar(range(len(files))):
+    try:
+        filename = files[i]
+        tiles = image_slicer.slice(filename, col=args.collumns, row=args.rows, save=False)
+        image_slicer.save_tiles(tiles, prefix=get_prefix(filename, args.path), directory=directory)
+    except Exception as e: print(e)
 print("end")
