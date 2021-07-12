@@ -5,7 +5,6 @@ Created on Wed Jul  7 11:46:08 2021
 @author: jagra26
 """
 from alive_progress import alive_bar
-#import image_slicer
 import glob
 import os
 import argparse
