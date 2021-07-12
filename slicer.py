@@ -4,11 +4,12 @@ Created on Wed Jul  7 11:46:08 2021
 
 @author: jagra26
 """
-from tqdm import tqdm
-import image_slicer
+from alive_progress import alive_bar
+#import image_slicer
 import glob
 import os
 import argparse
+from ripper import slice, save_tiles
 
 def get_prefix(filename, foldername):
     splitedFile = filename.split("\\")
@@ -33,11 +34,12 @@ else: directory = args.directory
 files = glob.glob(args.path+"/*")
 
 count = 1
-
-for i in tqdm(range(len(files))):
-    try:
-        filename = files[i]
-        tiles = image_slicer.slice(filename, col=args.collumns, row=args.rows, save=False)
-        image_slicer.save_tiles(tiles, prefix=get_prefix(filename, args.path), directory=directory)
-    except Exception as e: print(e)
+with alive_bar(len(files)) as bar:
+    for i in range(len(files)):
+        try:
+            filename = files[i]
+            tiles = slice(filename, col=args.collumns, row=args.rows, save=False)
+            save_tiles(tiles, prefix=get_prefix(filename, args.path), directory=directory)
+            bar()
+        except Exception as e: print(e)
 print("end")

@@ -22,3 +22,7 @@ example:
 ```
 python slicer.py -p folderWithImages
 ```
+
+## Ripper
+
+library based on [image-slicer](https://github.com/samdobson/image_slicer), [numpy](https://numpy.org) and [opencv](https://opencv.org) to slice images
