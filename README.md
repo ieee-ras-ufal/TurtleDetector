@@ -13,14 +13,13 @@ Install the packages
 |Arg|Purpose|Default|
 |---|-------|-------|
 |-p| Input path| testImages|
-|-d| Output directory| |
 |-c| Collums| 8|
 |-r| Rows| 6|
 
 example:
 
 ```
-python slicer.py -p folderWithImages
+python slicer.py -p folderWithFoldersWithImages
 ```
 
 ## Ripper
